@@ -3,7 +3,7 @@ require 'foaf_parser'
 
 describe 'FoafParser' do
   before :each do
-    @fp = FoafParser.new
+    @fp = FoafParser.new("http://stanford.edu/~sdoljack/sdoljack_foaf.rdf")
   end
 
   it 'can instantiate' do
@@ -12,5 +12,10 @@ describe 'FoafParser' do
 
   it 'introduces itself' do
     expect(@fp.speak).to eq("I'm FoafParser!")
+  end
+
+  it 'passes an rdf uri' do
+    fp = FoafParser.new("http://stanford.edu/~bess/foaf.rdf")
+    expect(fp.url).to eq("http://stanford.edu/~bess/foaf.rdf")
   end
 end
